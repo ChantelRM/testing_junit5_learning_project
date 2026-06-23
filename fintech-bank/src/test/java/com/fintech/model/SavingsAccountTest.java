@@ -38,10 +38,14 @@ public class SavingsAccountTest {
     }
 
     @Test
-    void overridesToStringFromBank(){
+    void toStringHasInterestRate(){
         SavingsAccount acc = new SavingsAccount("acc582tep","Tester",707559747.00,0.011);
         String savingToString= acc.toString();
 
         assertTrue(savingToString.contains(String.valueOf(acc.getInterestRate())));
+    }
+
+    @Test
+    void toStringOverridden(){
     }
 }
