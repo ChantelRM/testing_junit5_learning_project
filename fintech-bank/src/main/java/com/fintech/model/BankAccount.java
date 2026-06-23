@@ -39,11 +39,15 @@ public class BankAccount {
      * @throws IllegalArgumentException if amount is zero or negative
      */
     public void deposit(double amount, String description) {
+        deposit(amount,description,Transaction.Type.DEPOSIT);
+    }
+
+    public void deposit(double amount, String description, Transaction.Type type) {
         if (amount <= 0) {
-            throw new IllegalArgumentException("Deposit amount must be positive.");
+            throw new IllegalArgumentException("Interest amount must be positive.");
         }
         balance += amount;
-        transactionHistory.add(new Transaction(Transaction.Type.DEPOSIT, amount, description));
+        transactionHistory.add(new Transaction(type, amount, "Interest earned"));
     }
 
     /**

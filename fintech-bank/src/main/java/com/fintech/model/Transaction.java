@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public class Transaction {
 
     public enum Type {
-        DEPOSIT, WITHDRAWAL, TRANSFER_IN, TRANSFER_OUT
+        DEPOSIT, WITHDRAWAL, TRANSFER_IN, TRANSFER_OUT, INTEREST
     }
 
     private final Type type;
