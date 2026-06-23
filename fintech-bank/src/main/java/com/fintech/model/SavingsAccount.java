@@ -12,8 +12,9 @@ public class SavingsAccount extends BankAccount{
 
     public void applyInterest(){
         double depositInterest = getBalance() * interestRate;
+        if(depositInterest > 0) {
         deposit(depositInterest, "Interest earned from savings",Transaction.Type.INTEREST);
-    }
+    }   }
 
     public double getInterestRate(){return interestRate;}
 

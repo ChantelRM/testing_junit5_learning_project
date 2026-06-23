@@ -17,12 +17,11 @@ public class SavingsAccountTest {
         SavingsAccount acc = new SavingsAccount("acc-011","Tester",initialBalance,rate);
         acc.applyInterest();
 
-        assertEquals(expectedBalance, acc.getBalance(),0.001);
+        assertEquals(expectedBalance, acc.getBalance());
     }
 
     @Test
     void invalidAccountRaisesException(){
-
         assertThrows(IllegalArgumentException.class, () -> new SavingsAccount("testAcc-0098","Tester",650.06,-2));
     }
 
@@ -30,5 +29,11 @@ public class SavingsAccountTest {
     void invalidInterestRaisesException(){
 
         assertThrows(IllegalArgumentException.class, () -> new SavingsAccount("testAcc-0098","Tester",650.06,-2).applyInterest());
+    }
+
+    @Test
+    void savingInheritsFromBank(){
+        SavingsAccount acc = new SavingsAccount("acc582tep","Tester",707559747.00,0.011);
+        assertInstanceOf(BankAccount.class,acc, "SavingsAccount must Inherit from BankAccount");
     }
 }
