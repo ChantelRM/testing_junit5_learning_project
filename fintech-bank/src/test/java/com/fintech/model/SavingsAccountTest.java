@@ -36,4 +36,12 @@ public class SavingsAccountTest {
         SavingsAccount acc = new SavingsAccount("acc582tep","Tester",707559747.00,0.011);
         assertInstanceOf(BankAccount.class,acc, "SavingsAccount must Inherit from BankAccount");
     }
+
+    @Test
+    void overridesToStringFromBank(){
+        SavingsAccount acc = new SavingsAccount("acc582tep","Tester",707559747.00,0.011);
+        String savingToString= acc.toString();
+
+        assertTrue(savingToString.contains(String.valueOf(acc.getInterestRate())));
+    }
 }
