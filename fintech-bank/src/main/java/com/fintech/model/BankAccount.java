@@ -47,7 +47,7 @@ public class BankAccount {
             throw new IllegalArgumentException("Interest amount must be positive.");
         }
         balance += amount;
-        transactionHistory.add(new Transaction(type, amount, "Interest earned"));
+        transactionHistory.add(new Transaction(type, amount, description));
     }
 
     /**
