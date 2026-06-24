@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.fintech.model.BankAccountTest$TransactionHistoryTests
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.193 s -- in com.fintech.model.BankAccountTest$TransactionHistoryTests

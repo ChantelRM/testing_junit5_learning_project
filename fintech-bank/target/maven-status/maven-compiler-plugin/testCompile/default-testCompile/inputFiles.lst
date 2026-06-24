@@ -1,0 +1,3 @@
+/home/chantelmuthaphuli/Documents/testing_junit5_learning_project/fintech-bank/src/test/java/com/fintech/model/BankAccountTest.java
+/home/chantelmuthaphuli/Documents/testing_junit5_learning_project/fintech-bank/src/test/java/com/fintech/model/SavingsAccountTest.java
+/home/chantelmuthaphuli/Documents/testing_junit5_learning_project/fintech-bank/src/test/java/com/fintech/exception/InsufficientFundsExceptionTest.java

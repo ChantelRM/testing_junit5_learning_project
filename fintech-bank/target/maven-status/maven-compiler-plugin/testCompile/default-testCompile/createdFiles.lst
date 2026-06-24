@@ -1,0 +1,7 @@
+com/fintech/model/BankAccountTest.class
+com/fintech/model/BankAccountTest$WithdrawalTests.class
+com/fintech/model/SavingsAccountTest.class
+com/fintech/model/BankAccountTest$TransferTests.class
+com/fintech/exception/InsufficientFundsExceptionTest.class
+com/fintech/model/BankAccountTest$DepositTests.class
+com/fintech/model/BankAccountTest$TransactionHistoryTests.class
