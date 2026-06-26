@@ -16,7 +16,10 @@ public class AccountsService {
     }
 
     public void addAccount(BankAccount newAccount) throws AccountCreationException {
-        if(accounts.containsKey(newAccount.getAccountNumber())) throw new AccountCreationException(newAccount);
+        if(accounts.containsKey(newAccount.getAccountNumber())){
+            throw new AccountCreationException(newAccount);
+        }
+
         accounts.put(newAccount.getAccountNumber(),newAccount);
     }
 
