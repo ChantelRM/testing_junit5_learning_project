@@ -4,6 +4,9 @@ import com.fintech.exception.AccountCreationException;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AccountsServiceTest {
@@ -51,25 +54,59 @@ public class AccountsServiceTest {
 }
 
     @Test
-    void findBankReturnsBankAccount(){}
+    void findBankReturnsBankAccount(){
+        //act: find account
+        BankAccount bankacc= service.findBankAccount("acc-001");
+        //assert: return the same bank account ibject that was created in setUp
+        assertEquals("acc-001",bankacc.getAccountNumber());
+        assertEquals(acc1,bankacc);
+    }
+
+
 
     @Test
-    void findNonexistentBankReturnNull(){}
+    void findNonexistentBankReturnNull(){
+        assertNull(service.findBankAccount("applebanana-001"));
+    }
 
     @Test
-    void getAccountsReturnChildTypes(){}
+    void getAccountsReturnOnlySavingsAccounts(){
+
+        assertEquals(1,service.getSavingsAccounts().size());
+    }
 
     @Test
-    void getSavingsRetunsOnlySavingChildTypes(){}
+    void getSavingsRetunsOnlySavingAccounts(){
+
+
+    }
 
     @Test
-    void removeAccountRemoveAndsDEceasesSize(){}
+    void getSavingsReturnNullIfEmpty(){
+        //act : remove saving acc
+        service.removeAccount("acc-003");
+
+        assertEquals(new ArrayList<>(),service.getSavingsAccounts());
+    }
 
     @Test
-    void accountExistsReturnsTrueIfFound(){}
+    void removeAccountRemoveAndsDEceasesSize(){
+        //act: remove one bank account
+        service.removeAccount("acc-001");
+
+        //assert
+        assertEquals(2,service.getAccounts().size());
+    }
 
     @Test
-    void accountExistReturnsFalseIfNotFound(){}
+    void accountExistsReturnsTrueIfFound(){
+        assertTrue(service.accountExists("acc-001"));
+    }
+
+    @Test
+    void accountExistReturnsFalseIfNotFound(){
+        assertFalse(service.accountExists("appleBanana-001"));
+    }
 
 
 }
