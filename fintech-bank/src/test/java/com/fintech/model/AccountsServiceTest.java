@@ -58,8 +58,7 @@ public class AccountsServiceTest {
         //act: find account
         BankAccount bankacc= service.findBankAccount("acc-001");
         //assert: return the same bank account ibject that was created in setUp
-        assertEquals("acc-001",bankacc.getAccountNumber());
-        assertEquals(acc1,bankacc);
+        assertSame(acc1,bankacc);
     }
 
     @Test
@@ -75,19 +74,13 @@ public class AccountsServiceTest {
     }
 
     @Test
-    void getSavingsAccountsReturnOnlySavingsAccounts(){
-
-        assertEquals(1,service.getSavingsAccounts().size());
-    }
-
-    @Test
     void getSavingsReturnsSavingAccounts(){
         //act
         List<SavingsAccount> sa2= service.getSavingsAccounts();
 
         //assert
         assertInstanceOf(SavingsAccount.class,sa2.get(0));
-
+        assertSame(acc3,sa2.get(0));
     }
 
     @Test
@@ -99,12 +92,21 @@ public class AccountsServiceTest {
     }
 
     @Test
-    void removeAccountRemoveAndsDeceasesSize(){
+    void removeAccountRemoveAndDeceasesSize(){
         //act: remove one bank account
         service.removeAccount("acc-001");
 
         //assert
         assertEquals(2,service.getAccounts().size());
+    }
+
+    @Test
+    void removeAccountMakeAccountUnfinable(){
+        //act
+        service.removeAccount("acc-002");
+        //assert
+        assertNull(service.findBankAccount("acc=002"));
+
     }
 
     @Test

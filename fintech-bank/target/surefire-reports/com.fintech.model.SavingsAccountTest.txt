@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.fintech.model.SavingsAccountTest
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.829 s <<< FAILURE! -- in com.fintech.model.SavingsAccountTest
-com.fintech.model.SavingsAccountTest.overridesToStringFromBank -- Time elapsed: 0.167 s <<< FAILURE!
+Tests run: 8, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.406 s <<< FAILURE! -- in com.fintech.model.SavingsAccountTest
+com.fintech.model.SavingsAccountTest.toStringHasInterestRate -- Time elapsed: 0.120 s <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -10,7 +10,7 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
 	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
 	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
-	at com.fintech.model.SavingsAccountTest.overridesToStringFromBank(SavingsAccountTest.java:45)
+	at com.fintech.model.SavingsAccountTest.toStringHasInterestRate(SavingsAccountTest.java:45)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
