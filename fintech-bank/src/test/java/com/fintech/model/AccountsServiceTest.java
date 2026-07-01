@@ -62,7 +62,12 @@ public class AccountsServiceTest {
         assertEquals(acc1,bankacc);
     }
 
-
+    @Test
+    void findBankAccountByIdReturnSavingsAccount(){
+        BankAccount result = service.findBankAccount("acc-003");
+        assertNotNull(result);
+        assertInstanceOf(SavingsAccount.class, result);
+    }
 
     @Test
     void findNonexistentBankReturnNull(){
@@ -70,19 +75,23 @@ public class AccountsServiceTest {
     }
 
     @Test
-    void getAccountsReturnOnlySavingsAccounts(){
+    void getSavingsAccountsReturnOnlySavingsAccounts(){
 
         assertEquals(1,service.getSavingsAccounts().size());
     }
 
     @Test
-    void getSavingsRetunsOnlySavingAccounts(){
+    void getSavingsReturnsSavingAccounts(){
+        //act
+        List<SavingsAccount> sa2= service.getSavingsAccounts();
 
+        //assert
+        assertInstanceOf(SavingsAccount.class,sa2.get(0));
 
     }
 
     @Test
-    void getSavingsReturnNullIfEmpty(){
+    void getSavingsReturnEmptyList(){
         //act : remove saving acc
         service.removeAccount("acc-003");
 
@@ -90,7 +99,7 @@ public class AccountsServiceTest {
     }
 
     @Test
-    void removeAccountRemoveAndsDEceasesSize(){
+    void removeAccountRemoveAndsDeceasesSize(){
         //act: remove one bank account
         service.removeAccount("acc-001");
 
@@ -106,6 +115,11 @@ public class AccountsServiceTest {
     @Test
     void accountExistReturnsFalseIfNotFound(){
         assertFalse(service.accountExists("appleBanana-001"));
+    }
+
+    @Test
+    void getAccountsReturnsSavings(){
+        assertTrue(service.getAccounts().containsValue(acc3));
     }
 
 
