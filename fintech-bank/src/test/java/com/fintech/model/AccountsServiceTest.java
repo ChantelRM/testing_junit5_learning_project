@@ -124,5 +124,23 @@ public class AccountsServiceTest {
         assertTrue(service.getAccounts().containsValue(acc3));
     }
 
+    @Test
+    void getAllTransactionsByType_shouldReturnDepositAcrossAllAccounts(){
 
+    }
+
+    @Test
+    void  getAllTransactionsByType_whenNoAccountsHaveThatType_shouldReturnEmptyList(){
+
+    }
+
+    @Test
+    void  getAllTransactionsByMonth_shouldReturnTransactionsFromAllAccountsForThatMonth(){
+
+    }
+
+    @Test
+    void  getAllTransactionsByMonth_whenNoActivity_shouldReturnEmptyList(){
+
+    }
 }
