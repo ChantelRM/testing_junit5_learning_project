@@ -2,10 +2,7 @@ package com.fintech.model;
 
 import com.fintech.exception.AccountCreationException;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class AccountsService {
@@ -44,4 +41,17 @@ public class AccountsService {
     public boolean accountExists(String accountNumber){
         return accounts.containsKey(accountNumber);
     }
+
+    public List<Transaction> getAllTransactionsByType(Transaction.Type type) {
+        List<Transaction> transactionHistory= new ArrayList<>();
+
+        return Collections.unmodifiableList(transactionHistory);
+    }
+    
+    public List<Transaction> getAllTransactionsByMonth(int year, int month) {
+
+        List<Transaction> transactionHistory= new ArrayList<>();
+        return Collections.unmodifiableList(transactionHistory);
+    }
+    
 }

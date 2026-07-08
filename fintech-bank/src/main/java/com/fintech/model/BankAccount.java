@@ -2,6 +2,7 @@ package com.fintech.model;
 
 import com.fintech.exception.InsufficientFundsException;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -106,6 +107,22 @@ public class BankAccount {
 
     /** Returns an unmodifiable view of transaction history. */
     public List<Transaction> getTransactionHistory() {
+
+        return Collections.unmodifiableList(transactionHistory);
+    }
+
+    public List<Transaction> getTransactionsByType(Transaction.Type type){
+
+        return Collections.unmodifiableList(transactionHistory);
+    }
+
+    public List<Transaction> getTransactionsByMonth(int year, int month){
+
+        return Collections.unmodifiableList(transactionHistory);
+    }
+
+    public List<Transaction> getTransactionsBetween(LocalDateTime from, LocalDateTime to){
+
         return Collections.unmodifiableList(transactionHistory);
     }
 
