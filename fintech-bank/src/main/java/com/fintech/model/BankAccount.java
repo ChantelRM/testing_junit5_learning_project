@@ -45,7 +45,7 @@ public class BankAccount {
 
     public void deposit(double amount, String description, Transaction.Type type) {
         if (amount <= 0) {
-            throw new IllegalArgumentException("Interest amount must be positive.");
+            throw new IllegalArgumentException("Deposit amount must be positive.");
         }
         balance += amount;
         transactionHistory.add(new Transaction(type, amount, description));
@@ -107,23 +107,43 @@ public class BankAccount {
 
     /** Returns an unmodifiable view of transaction history. */
     public List<Transaction> getTransactionHistory() {
-
         return Collections.unmodifiableList(transactionHistory);
     }
 
     public List<Transaction> getTransactionsByType(Transaction.Type type){
+        List<Transaction> filtered = new ArrayList<>();
 
-        return Collections.unmodifiableList(transactionHistory);
+        for(Transaction t:getTransactionHistory()){
+            if(t.getType()==type){
+                filtered.add(t);
+            }
+        }
+        return filtered;
     }
 
     public List<Transaction> getTransactionsByMonth(int year, int month){
+        List<Transaction> filtered = new ArrayList<>();
 
-        return Collections.unmodifiableList(transactionHistory);
+        for(Transaction t:getTransactionHistory()){
+            if(t.getTimestamp().getMonth().getValue()==month && t.getTimestamp().getYear()==year){
+                filtered.add(t);
+            }
+        }
+        return filtered;
     }
 
+    /*
+        Returns transactions where the timestamp >= from and timestamp < to
+    */
     public List<Transaction> getTransactionsBetween(LocalDateTime from, LocalDateTime to){
+        List<Transaction> filtered = new ArrayList<>();
 
-        return Collections.unmodifiableList(transactionHistory);
+        for(Transaction t:getTransactionHistory()){
+            if(t.getTimestamp().isAfter(from) && t.getTimestamp().isBefore(to)){
+                filtered.add(t);
+            }
+        }
+        return filtered;
     }
 
     @Override
