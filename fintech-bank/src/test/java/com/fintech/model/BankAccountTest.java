@@ -190,7 +190,32 @@ class BankAccountTest {
                 account.withdraw(invalidAmount, "Bad withdrawal")
             );
         }
-    }
+
+        @Test
+        void withdraw_intoDraftLimit_shouldSucceed() throws InsufficientFundsException {
+            BankAccount bank = new BankAccount("test-001","tester",50.00,50.00);
+            bank.setOverdraftLimit(20.00);
+
+            bank.withdraw(55.00,"ATM withdrawal");
+
+            assertEquals(-5.00, bank.getBalance());
+        }
+
+        @Test
+        void withdraw_beyondOverdraftLimit_shouldFail() throws InsufficientFundsException {
+            BankAccount bank = new BankAccount("test-001","tester",50.00,0.00);
+
+            assertThrows(InsufficientFundsException.class, () -> bank.withdraw(73.00,"ATM withdrawal"));
+        }
+
+        @Test
+        void withdraw_exactlyAtOverdraftLimit_shouldSucceed() throws InsufficientFundsException {
+            BankAccount bank = new BankAccount("test-001","tester",50.00,50.00);
+            bank.setOverdraftLimit(20.00);
+            bank.withdraw(70.00,"ATM withdrawal");
+
+        }
+        }
 
 
     // ================================================================

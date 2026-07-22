@@ -1,5 +1,6 @@
 package com.fintech.model;
 
+import com.fintech.exception.AccountCreationException;
 import com.fintech.exception.InsufficientFundsException;
 
 import java.time.LocalDateTime;
@@ -18,15 +19,24 @@ public class BankAccount {
     private final String accountNumber;
     private final String ownerName;
     private double balance;
-    private final List<Transaction> transactionHistory;
+    private List<Transaction> transactionHistory;
+    private double overdraftLimit;
 
     public BankAccount(String accountNumber, String ownerName, double initialBalance) {
         if (initialBalance < 0) {
             throw new IllegalArgumentException("Initial balance cannot be negative.");
         }
+       this(accountNumber, ownerName,initialBalance, 0);
+    }
+
+    public BankAccount(String accountNumber, String ownerName, double initialBalance, double overdraftLimit){
+        if(initialBalance < 0) throw new IllegalArgumentException("Initial balance cannot be negative");
+        if(overdraftLimit <0) throw new IllegalArgumentException("Overdraft limit cannot be negative");
+
         this.accountNumber = accountNumber;
         this.ownerName = ownerName;
-        this.balance = initialBalance;
+        this.balance =initialBalance;
+        this.overdraftLimit =overdraftLimit;
         this.transactionHistory = new ArrayList<>();
     }
 
@@ -57,12 +67,11 @@ public class BankAccount {
      * @throws IllegalArgumentException      if amount is zero or negative
      * @throws InsufficientFundsException    if amount exceeds current balance
      */
-    public void withdraw(double amount, String description)
-            throws InsufficientFundsException {
+    public void withdraw(double amount, String description) {
         if (amount <= 0) {
             throw new IllegalArgumentException("Withdrawal amount must be positive.");
         }
-        if (amount > balance) {
+        if (amount > balance + overdraftLimit) {
             throw new InsufficientFundsException(amount, balance);
         }
         balance -= amount;
@@ -144,6 +153,10 @@ public class BankAccount {
             }
         }
         return filtered;
+    }
+
+    public void setOverdraftLimit(double overdraftLimit) {
+        this.overdraftLimit = overdraftLimit;
     }
 
     @Override
