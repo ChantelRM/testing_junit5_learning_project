@@ -202,10 +202,11 @@ class BankAccountTest {
         }
 
         @Test
-        void withdraw_beyondOverdraftLimit_shouldFail() throws InsufficientFundsException {
+        void withdraw_beyondOverdraftLimit_shouldFail(){
             BankAccount bank = new BankAccount("test-001","tester",50.00,0.00);
 
             assertThrows(InsufficientFundsException.class, () -> bank.withdraw(73.00,"ATM withdrawal"));
+            assertEquals(50.00, bank.getBalance());
         }
 
         @Test

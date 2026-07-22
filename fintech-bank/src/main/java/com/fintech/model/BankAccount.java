@@ -67,7 +67,8 @@ public class BankAccount {
      * @throws IllegalArgumentException      if amount is zero or negative
      * @throws InsufficientFundsException    if amount exceeds current balance
      */
-    public void withdraw(double amount, String description) {
+    public void withdraw(double amount, String description)
+            throws InsufficientFundsException {
         if (amount <= 0) {
             throw new IllegalArgumentException("Withdrawal amount must be positive.");
         }
